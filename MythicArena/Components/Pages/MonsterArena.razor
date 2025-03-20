@@ -1,15 +1,15 @@
 ﻿﻿<!--this tells the menu on the left where to navigate to based on what we gave the navmenu in layout folder-->
-@page "/fightzone"
+@page "/MonsterArena"
 
 <!--render mode needed-->
 @rendermode InteractiveServer
 
-<PageTitle>FightZone</PageTitle>
+<PageTitle>Monster Arena</PageTitle>
 
-<h1>FightZone</h1>
+<h1>Monster Arena</h1>
 
 <!--read only text box-->
-<textarea @bind="@terminalMessages" readonly rows="10" cols="50"></textarea>
+<textarea @bind="@terminalMessages" readonly rows="20" cols="70"></textarea>
 
 <br />
 
@@ -22,7 +22,7 @@
 <p>@feedbackMessage</p>
 
 @code {
-    private string terminalMessages = "Welcome to the FightZone!\n";
+    private string terminalMessages = "Welcome to the Arena!\n";
     private string userInput = string.Empty;
     private string feedbackMessage = string.Empty;
 
