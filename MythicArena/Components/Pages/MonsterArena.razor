@@ -1,0 +1,63 @@
+﻿﻿<!--this tells the menu on the left where to navigate to based on what we gave the navmenu in layout folder-->
+@page "/fightzone"
+
+<!--render mode needed-->
+@rendermode InteractiveServer
+
+<PageTitle>FightZone</PageTitle>
+
+<h1>FightZone</h1>
+
+<!--read only text box-->
+<textarea @bind="@terminalMessages" readonly rows="10" cols="50"></textarea>
+
+<br />
+
+<!--user input textbox-->
+<input type="text" @bind="userInput" placeholder="Type a command" @onkeydown="HandleKeyDown" />
+
+<!--a button that executes the command-->
+<button @onclick="ProcessCommand">Execute Command</button>
+
+<p>@feedbackMessage</p>
+
+@code {
+    private string terminalMessages = "Welcome to the FightZone!\n";
+    private string userInput = string.Empty;
+    private string feedbackMessage = string.Empty;
+
+    //enter key press will process command
+    private void HandleKeyDown(KeyboardEventArgs e)
+    {
+        if (e.Key == "Enter")
+        {
+            ProcessCommand();
+        }
+    }
+
+    private void ProcessCommand()
+    {
+        if (!string.IsNullOrEmpty(userInput))
+        {
+            terminalMessages += $"User:{userInput}\n";
+            feedbackMessage = $"Processing command: {userInput}";
+
+            userInput = string.Empty;
+
+        }
+        else
+        {
+            feedbackMessage = "Please type a command to execute";
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+}

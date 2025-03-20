@@ -1,0 +1,58 @@
+﻿﻿@using MythicArena.Components
+@page "/monsters"
+@rendermode InteractiveServer
+
+
+
+
+<h3>Monsters</h3>
+
+@if (_monsters == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>MaxHealth</th>
+                <th>Defense</th>
+                <th>Power</th>
+                <th>Speed</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var monster in _monsters)
+            {
+                <tr>
+                    <td>@monster.Name</td>
+                    <td>@monster.MaxHealth</td>
+                    <td>@monster.Defense</td>
+                    <td>@monster.Power</td>
+                    <td>@monster.Speed</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+
+
+
+
+
+
+@code {
+
+    [Parameter]
+    public List<Monster> _monsters { get; set; }
+
+
+
+
+
+
+
+}
