@@ -1,7 +1,8 @@
 ﻿﻿@using MythicArena.Components
 @page "/monsters"
-@inject GameLogic gameLogic
-<!-- rendermode InteractiveServer -->
+<!-- inject GameLogic gameLogic  -->
+
+@rendermode InteractiveServer
 
 
 
@@ -53,8 +54,30 @@ else
         </tbody>
     </table>
 
+    <!--Creates input boxes for monster properties-->
+    <h3>Add New Monster</h3>
+    <div>
+        <label for="monsterName">Name:</label>
+        <input id="monsterName" @bind="newMonsterName" />
 
+        <label for="monsterMaxHealth">Max Health:</label>
+        <input id="monsterMaxHealth" type="number" @bind="newMonsterMaxHealth" />
 
+        <label for="monsterDefense">Defense:</label>
+        <input id="monsterDefense" type="number" @bind="newMonsterDefense" />
+
+        <label for="monsterPower">Power:</label>
+        <input id="monsterPower" type="number" @bind="newMonsterPower" />
+
+        <label for="monsterSpeed">Speed:</label>
+        <input id="monsterSpeed" type="number" @bind="newMonsterSpeed" />
+
+        
+
+       
+
+        <button @onclick="AddMonster">Add Monster</button>
+    </div>
 
 
 
@@ -64,21 +87,56 @@ else
 
 
 }
-
 @code {
     
-    public List<Monster> _monsters;
+    //public List<Monster> _monsters;
 
-    protected override void OnInitialized()
+    private List<Monster> _monsters = new List<Monster>
     {
-        _monsters = gameLogic._monsters;
+                new Monster { Name = "Dragon", MaxHealth = 50, Defense = 3, Power = 10, Speed = 10 },
+                new Monster { Name = "Kelpie", MaxHealth = 25, Defense = 3, Power = 10, Speed = 15 },
+                new Monster { Name = "Hellcat", MaxHealth = 20, Defense = 3, Power = 15, Speed = 30 },
+    };
+
+    // protected override void OnInitialized()
+    // {
+    //     _monsters = gameLogic._monsters;
 
         
+    // }
+
+    private string newMonsterName;
+    private int newMonsterMaxHealth;
+    private int newMonsterDefense;
+    private int newMonsterPower;
+    private int newMonsterSpeed;
+
+    // Method to add a new monster
+    private void AddMonster()
+    {
+        if (!string.IsNullOrWhiteSpace(newMonsterName) && newMonsterMaxHealth > 0 && newMonsterDefense > 0 && newMonsterPower > 0 && newMonsterSpeed > 0)
+        {
+            var newMonster = new Monster
+                {
+                    Name = newMonsterName,
+                    MaxHealth = newMonsterMaxHealth,
+                    Defense = newMonsterPower,
+                    Power = newMonsterPower,
+                    Speed = newMonsterPower
+                };
+
+            _monsters.Add(newMonster);  // Add the new monster to the list
+
+            newMonsterName = string.Empty;
+            newMonsterMaxHealth = 0;
+            newMonsterDefense = 0;
+            newMonsterPower = 0;
+            newMonsterSpeed = 0;
+
+            // Manually trigger a re-render to update the table
+            StateHasChanged();  // This ensures the UI is refreshed
+        }
     }
-
-
-
-
 
 
 

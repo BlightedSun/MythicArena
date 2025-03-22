@@ -3,7 +3,7 @@
     public class Monster
     {
         //get and set. get a value from an object. set sets the value.
-        public string Name { get; set; }
+        public string Name { get; set; } = string.Empty;
         //public string MonsterElement { get; set; }
         //public string Weakness { get; set; }
         public int MaxHealth { get; set; }
@@ -19,20 +19,20 @@
         public bool IsDead { get { return CurrentHealth <= 0; } }
 
 
-
+        
 
 
         //constructor for class monster
-        public Monster(string name, int maxHealth, int defense, int power, int speed)
-        {
-            this.Name = name;
-            this.MaxHealth = maxHealth;
-            this.CurrentHealth = maxHealth;
-            this.Defense = defense;
-            this.Power = power;
-            this.Speed = speed;
-            this.random = new Random();
-        }
+        //public Monster(string name, int maxHealth, int defense, int power, int speed)
+        //{
+        //    this.Name = name;
+        //    this.MaxHealth = maxHealth;
+        //    this.CurrentHealth = maxHealth;
+        //    this.Defense = defense;
+        //    this.Power = power;
+        //    this.Speed = speed;
+        //    this.random = new Random();
+        //}
 
 
 

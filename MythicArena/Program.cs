@@ -1,4 +1,9 @@
-using MythicArena.Components;
+global using MythicArena.Components;
+global using Microsoft.EntityFrameworkCore;
+
+
+
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -6,6 +11,15 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 builder.Services.AddSingleton<GameLogic>();
+
+
+//builder.Services.AddDbContext<DataContext>(options =>
+//{
+//    options.UseSqlServer(builder.Configuration.GetConnectionString("Default Connection"));
+//});
+
+
+
 
 var app = builder.Build();
 

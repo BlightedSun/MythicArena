@@ -1,8 +1,13 @@
 ﻿﻿<!--this tells the menu on the left where to navigate to based on what we gave the navmenu in layout folder-->
 @page "/MonsterArena"
+@inject GameLogic gameLogic
 
 <!--render mode needed-->
 @rendermode InteractiveServer
+
+
+
+
 
 <PageTitle>Monster Arena</PageTitle>
 
@@ -22,7 +27,7 @@
 <p>@feedbackMessage</p>
 
 @code {
-    private string terminalMessages = "Welcome to the Arena!\n";
+    private string terminalMessages = "Please pick 1 monster by typing its name: \n";
     private string userInput = string.Empty;
     private string feedbackMessage = string.Empty;
 
@@ -51,12 +56,22 @@
         }
     }
 
+
     
-        
 
 
+    public List<Monster> _monsters;
+
+    protected override void OnInitialized()
+    {
+        _monsters = gameLogic._monsters;
 
 
+    }
 
+    
+
+
+   
 
 }

@@ -11,13 +11,17 @@
         //constructor
         public GameLogic()
         {
-            AddToMonsterList(new Monster("Dragon", 50, 3, 10, 10));
-            AddToMonsterList(new Monster("Kelpie", 25, 3, 10, 15));
-            AddToMonsterList(new Monster("Hellcat", 20, 3, 15, 30));
+            //AddToMonsterList(new Monster("Dragon", 50, 3, 10, 10));
+            //AddToMonsterList(new Monster("Kelpie", 25, 3, 10, 15));
+            //AddToMonsterList(new Monster("Hellcat", 20, 3, 15, 30));
+
+
             //_monsters.Add("dragon", new Monster("dragon", 100, 10, 10, 10));
             //name, hp, def, pwr, spd
 
             AddToAbilityList(new Ability("Fire Breath", 10, 100));
+            AddToAbilityList(new Ability("Tidal Wave", 10, 100));
+            AddToAbilityList(new Ability("Back Paw", 10, 100));
 
 
 
@@ -37,6 +41,8 @@
             _monsters.Add(monster);
 
         }
+
+       
 
         public void AddToAbilityList(Ability ability)
         {
