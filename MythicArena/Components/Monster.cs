@@ -11,7 +11,7 @@
         public int Defense { get; set; }
         public int Power { get; set; }
         public int Speed { get; set; }
-        //public Ability MonsterAbility { get; set; }
+        public List<Ability> Abilities { get; set; } = new List<Ability>();
         public Random random { get; set; }
 
         public int Hp { get { return CurrentHealth; } }

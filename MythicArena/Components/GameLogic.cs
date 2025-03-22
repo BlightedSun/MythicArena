@@ -17,7 +17,7 @@
             //_monsters.Add("dragon", new Monster("dragon", 100, 10, 10, 10));
             //name, hp, def, pwr, spd
 
-            AddToAbilityList(new Ability("Fire Breath", 40, 100));
+            AddToAbilityList(new Ability("Fire Breath", 10, 100));
 
 
 
