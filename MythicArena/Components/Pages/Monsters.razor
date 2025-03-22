@@ -1,11 +1,17 @@
 ﻿﻿@using MythicArena.Components
 @page "/monsters"
-@rendermode InteractiveServer
+@inject GameLogic gameLogic
+<!-- rendermode InteractiveServer -->
+
+
+
 
 
 
 
 <h3>Monsters</h3>
+
+
 
 @if (_monsters == null)
 {
@@ -13,41 +19,73 @@
 }
 else
 {
+
+
     <table class="table">
         <thead>
             <tr>
+
+
                 <th>Name</th>
                 <th>MaxHealth</th>
                 <th>Defense</th>
                 <th>Power</th>
                 <th>Speed</th>
+
             </tr>
         </thead>
         <tbody>
             @foreach (var monster in _monsters)
             {
                 <tr>
+
+
                     <td>@monster.Name</td>
                     <td>@monster.MaxHealth</td>
                     <td>@monster.Defense</td>
                     <td>@monster.Power</td>
                     <td>@monster.Speed</td>
+
+
+
                 </tr>
             }
         </tbody>
     </table>
+
+
+
+
+
+
+
+
+
+
+
 }
 
-
-
-
-
-
-
 @code {
+    
+    public List<Monster> _monsters;
 
-    [Parameter]
-    public List<Monster> _monsters { get; set; }
+    protected override void OnInitialized()
+    {
+        _monsters = gameLogic._monsters;
+
+        
+    }
+
+
+
+
+
+
+
+
+
+
+
 
 
 
