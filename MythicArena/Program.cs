@@ -1,5 +1,6 @@
-global using MythicArena.Components;
-global using Microsoft.EntityFrameworkCore;
+using MythicArena.Components;
+using Microsoft.EntityFrameworkCore;
+using MythicArena.Data;
 
 
 
@@ -7,16 +8,18 @@ global using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddControllers();
+
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 builder.Services.AddSingleton<GameLogic>();
 
-
-//builder.Services.AddDbContext<DataContext>(options =>
-//{
-//    options.UseSqlServer(builder.Configuration.GetConnectionString("Default Connection"));
-//});
+//set up for database
+builder.Services.AddDbContext<DataContext>(options =>
+{
+    options.UseSqlite(builder.Configuration.GetConnectionString("Default Connection"));
+});
 
 
 

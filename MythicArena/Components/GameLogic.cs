@@ -5,7 +5,23 @@
 
        
         public List<Ability> _abilities = new List<Ability>();
-        public List<Monster> _monsters = new List<Monster>();
+        //public List<Monster> _monsters = new List<Monster>();
+
+
+        //create and populate monster list
+        private List<Monster> _monsters = new List<Monster>
+        {
+                new Monster { Name = "Dragon", MaxHealth = 50, Defense = 3, Power = 10, Speed = 10 },
+                new Monster { Name = "Kelpie", MaxHealth = 25, Defense = 3, Power = 10, Speed = 15 },
+                new Monster { Name = "Hellcat", MaxHealth = 20, Defense = 3, Power = 15, Speed = 30 },
+        };
+
+        
+
+
+
+
+
 
 
         //constructor
