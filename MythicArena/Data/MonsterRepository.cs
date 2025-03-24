@@ -10,7 +10,7 @@
             _dbContext = new MonsterContext();
         }
 
-        public void AddProduct(Monster monster)
+        public void AddMonster(Monster monster)
         {
             _dbContext.Monsters.Add(monster);
             _dbContext.SaveChanges();

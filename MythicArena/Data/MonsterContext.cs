@@ -4,8 +4,14 @@ using System.Collections.Generic;
 
 namespace MythicArena.Data
 {
+
+    
     public class MonsterContext : DbContext
     {
+
+        
+
+
         public DbSet<Monster> Monsters { get; set; }
         public string DbPath { get; set; }
 

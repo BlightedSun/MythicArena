@@ -2,7 +2,7 @@
 
 namespace MythicArena.Data
 {
-    public class IMonsterRepository
+    public interface IMonsterRepository
     {
         void AddMonster(Monster monster);
 
