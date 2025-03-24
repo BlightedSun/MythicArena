@@ -16,9 +16,14 @@ builder.Services.AddRazorComponents()
 builder.Services.AddSingleton<GameLogic>();
 
 //set up for database
-builder.Services.AddDbContext<DataContext>(options =>
+builder.Services.AddDbContext<MonsterContext>(options =>
 {
-    options.UseSqlite(builder.Configuration.GetConnectionString("Default Connection"));
+
+    options.UseSqlite(builder.Configuration["ConnectionStrings:SQLiteDefault"]);
+    //servicelifetimescoped?
+    
+    
+    //options.UseSqlite(builder.Configuration.GetConnectionString("Default Connection"));
 });
 
 

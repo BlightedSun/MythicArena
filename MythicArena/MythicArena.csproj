@@ -15,4 +15,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="Data\MythicArena.Data.csproj" />
+  </ItemGroup>
+
 </Project>
