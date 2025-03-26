@@ -6,6 +6,7 @@ using MythicArena.Data;
 
 
 
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
@@ -14,6 +15,7 @@ builder.Services.AddControllers();
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 builder.Services.AddScoped<Fetch>();
+builder.Services.AddScoped<IMonsterRepository, MonsterRepository>();
 
 //set up for database
 builder.Services.AddDbContext<MonsterContext>(options =>
@@ -47,6 +49,12 @@ app.UseAntiforgery();
 app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode();
 
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<MonsterContext>();
+    db.Database.EnsureCreated();
+    //db.Database.Migrate();
+}
 app.Run();
 
 

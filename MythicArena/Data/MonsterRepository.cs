@@ -1,13 +1,15 @@
-﻿namespace MythicArena.Data
+﻿using Microsoft.EntityFrameworkCore;
+
+namespace MythicArena.Data
 {
     public class MonsterRepository : IMonsterRepository
     {
 
         private readonly MonsterContext _dbContext;
 
-        public MonsterRepository()
+        public MonsterRepository(MonsterContext dbContext)
         {
-            _dbContext = new MonsterContext();
+            _dbContext = dbContext;
         }
 
         public void AddMonster(Monster monster)
