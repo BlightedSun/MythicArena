@@ -13,7 +13,7 @@ builder.Services.AddControllers();
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
-builder.Services.AddSingleton<GameLogic>();
+builder.Services.AddScoped<Fetch>();
 
 //set up for database
 builder.Services.AddDbContext<MonsterContext>(options =>

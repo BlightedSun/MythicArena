@@ -1,6 +1,7 @@
 ﻿﻿<!--this tells the menu on the left where to navigate to based on what we gave the navmenu in layout folder-->
 @page "/MonsterArena"
-@inject GameLogic gameLogic
+<!-- inject GameLogic gameLogic -->
+
 
 <!--render mode needed-->
 @rendermode InteractiveServer
@@ -60,14 +61,14 @@
     
 
 
-    public List<Monster> _monsters;
+    // public List<Monster> _monsters;
 
-    protected override void OnInitialized()
-    {
-        _monsters = gameLogic.GetAllMonsters();
+    // protected override void OnInitialized()
+    // {
+    //     _monsters = gameLogic.GetAllMonsters();
 
 
-    }
+    // }
 
     
 

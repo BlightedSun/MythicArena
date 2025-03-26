@@ -8,8 +8,10 @@ namespace MythicArena.Data
     
     public class MonsterContext : DbContext
     {
-
-        
+        //needed constructure to get rid of error
+        public MonsterContext(DbContextOptions<MonsterContext> options) : base(options)
+        {
+        }
 
 
         public DbSet<Monster> Monsters { get; set; }

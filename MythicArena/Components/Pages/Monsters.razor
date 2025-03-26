@@ -1,8 +1,15 @@
-﻿﻿@using MythicArena.Components
-@page "/monsters"
-@inject GameLogic gameLogic
+﻿@using Microsoft.EntityFrameworkCore
+﻿@using MythicArena.Components
+@using MythicArena.Data
 
+@page "/monsters"
+
+<!-- inject GameLogic gameLogic -->
+
+@inject MonsterContext DbContext
+@inject Fetch Fetch
 @rendermode InteractiveServer
+
 
 
 
@@ -98,10 +105,17 @@ else
     //             new Monster { Name = "Hellcat", MaxHealth = 20, Defense = 3, Power = 15, Speed = 30 },
     // };
 
-    protected override void OnInitialized()
-    {
-        _monsters = gameLogic.GetAllMonsters();
+    // protected override void OnInitialized()
+    // {
+    //     _monsters = gameLogic.GetAllMonsters();
 
+    // }
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        
+        _monsters = Fetch.GetAllMonsters();
     }
 
     private string newMonsterName;
@@ -116,13 +130,13 @@ else
         if (!string.IsNullOrWhiteSpace(newMonsterName) && newMonsterMaxHealth > 0 && newMonsterDefense > 0 && newMonsterPower > 0 && newMonsterSpeed > 0)
         {
             var newMonster = new Monster
-                {
+            {
                     Name = newMonsterName,
                     MaxHealth = newMonsterMaxHealth,
                     Defense = newMonsterPower,
                     Power = newMonsterPower,
                     Speed = newMonsterPower
-                };
+            };
 
             _monsters.Add(newMonster);  // Add the new monster to the list
 
