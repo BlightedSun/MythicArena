@@ -21,8 +21,8 @@ builder.Services.AddScoped<IMonsterRepository, MonsterRepository>();
 builder.Services.AddScoped<IPicsumService, PicsumService>();
 //builder.Services.AddScoped<PicsumService>();
 //builder.Services.AddScoped<HttpClient>();
-builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("https://picsum.photos/500/500") });
-
+//builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("https://picsum.photos/500/500") });
+builder.Services.AddHttpClient<PicsumService>();
 
 
 
@@ -50,7 +50,7 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-//app.MapControllers();
+app.MapControllers();
 app.UseHttpsRedirection();
 
 app.UseStaticFiles();

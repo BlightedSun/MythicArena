@@ -5,6 +5,8 @@
 
 @page "/randomimage"
 @inject IPicsumService PicsumService
+@rendermode InteractiveServer
+
 
 
 <h3>Images</h3>
@@ -21,7 +23,7 @@
 
     private async Task LoadRandomImage()
     {
-        // You can change the dimensions or size as per your needs
+        // can change the numbers at the end for picture size
         imageUrl = await PicsumService.GetRandomImageWithSize(500, 500);
     }
 }

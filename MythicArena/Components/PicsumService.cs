@@ -7,12 +7,14 @@ namespace MythicArena.Components
 {
     public class PicsumService : IPicsumService
     {
-        private readonly PicsumService _httpClient;
+        //private readonly PicsumService _httpClient;
 
-        public PicsumService()
+
+        private readonly HttpClient _httpClient;
+        public PicsumService(HttpClient httpClient)
         {
             //PicsumService httpClient
-            //_httpClient = httpClient;
+            _httpClient = httpClient;
         }
 
         public async Task<string> GetRandomImageUrl()
