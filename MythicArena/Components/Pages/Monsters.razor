@@ -1,6 +1,7 @@
 ﻿@using Microsoft.EntityFrameworkCore
 ﻿@using MythicArena.Components
 @using MythicArena.Data
+@using System.Text.RegularExpressions
 
 @page "/monsters"
 
@@ -99,18 +100,7 @@ else
 
     public List<Monster> _monsters;
 
-    // private List<Monster> _monsters = new List<Monster>
-    // {
-    //             new Monster { Name = "Dragon", MaxHealth = 50, Defense = 3, Power = 10, Speed = 10 },
-    //             new Monster { Name = "Kelpie", MaxHealth = 25, Defense = 3, Power = 10, Speed = 15 },
-    //             new Monster { Name = "Hellcat", MaxHealth = 20, Defense = 3, Power = 15, Speed = 30 },
-    // };
-
-    // protected override void OnInitialized()
-    // {
-    //     _monsters = gameLogic.GetAllMonsters();
-
-    // }
+    
 
 
     protected override async Task OnInitializedAsync()
@@ -118,6 +108,15 @@ else
 
         _monsters = Fetch.GetAllMonsters();
     }
+
+
+    //REGEX check if name has numbers
+    public bool CheckMonsterName(string monsterName)
+    {
+        
+        return Regex.IsMatch(monsterName, @"^[a-zA-Z]+$");
+    }
+
 
     private string newMonsterName;
     private int newMonsterMaxHealth;
@@ -128,8 +127,10 @@ else
     // Method to add a new monster
     private void AddMonster()
     {
-        if (!string.IsNullOrWhiteSpace(newMonsterName) && newMonsterMaxHealth > 0 && newMonsterDefense > 0 && newMonsterPower > 0 && newMonsterSpeed > 0)
+        if (CheckMonsterName(newMonsterName) && !string.IsNullOrWhiteSpace(newMonsterName) && newMonsterMaxHealth > 0 && newMonsterDefense > 0 && newMonsterPower > 0 && newMonsterSpeed > 0)
         {
+
+
             var newMonster = new Monster
             {
                     Name = newMonsterName,

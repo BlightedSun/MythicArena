@@ -1,6 +1,8 @@
 using MythicArena.Components;
 using Microsoft.EntityFrameworkCore;
 using MythicArena.Data;
+using System.Net.Http;
+
 
 
 
@@ -16,6 +18,13 @@ builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 builder.Services.AddScoped<Fetch>();
 builder.Services.AddScoped<IMonsterRepository, MonsterRepository>();
+builder.Services.AddScoped<IPicsumService, PicsumService>();
+//builder.Services.AddScoped<PicsumService>();
+//builder.Services.AddScoped<HttpClient>();
+builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("https://picsum.photos/500/500") });
+
+
+
 
 //set up for database
 builder.Services.AddDbContext<MonsterContext>(options =>
@@ -41,6 +50,7 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+//app.MapControllers();
 app.UseHttpsRedirection();
 
 app.UseStaticFiles();
@@ -56,6 +66,8 @@ using (var scope = app.Services.CreateScope())
     //db.Database.Migrate();
 }
 app.Run();
+
+
 
 
 

@@ -1,0 +1,27 @@
+﻿@using Microsoft.EntityFrameworkCore
+﻿@using MythicArena.Components
+@using MythicArena.Data
+@using System.Net.Http
+
+@page "/randomimage"
+@inject IPicsumService PicsumService
+
+
+<h3>Images</h3>
+
+<button @onclick="LoadRandomImage">Load Random Image</button>
+
+@if (!string.IsNullOrEmpty(imageUrl))
+{
+    <img src="@imageUrl" alt="Random Image" />
+}
+
+@code {
+    private string imageUrl;
+
+    private async Task LoadRandomImage()
+    {
+        // You can change the dimensions or size as per your needs
+        imageUrl = await PicsumService.GetRandomImageWithSize(500, 500);
+    }
+}
