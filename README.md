@@ -35,5 +35,7 @@ Implement a regular expression (regex) to validate or ensure a field is always s
 Create a dictionary or list, populate it with several values, retrieve at least one value, and use it in your program (Monsters.razor -> _monsters list -> AddMonster method -> starts line 127)
 
 Add comments to your code explaining how you are using at least 2 of the solid principles
+
 Fetch.cs in Data folder. Single-responsibility principle: this class is only responsible for fetching the data and putting it in a list
+
 RandomImages.razor in Pages folder. Interface segregation principle: this page and method are separated from the monsters page because it has a separate function. The purpose of this page is to supply the user with an image
