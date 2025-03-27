@@ -21,6 +21,9 @@
 @code {
     private string imageUrl;
 
+    //interface segregation principle: this page and method are separated from the monsters page because it has a separate function.
+    //The purpose of this page is to supply the user with an image
+
     private async Task LoadRandomImage()
     {
         // can change the numbers at the end for picture size
