@@ -12,6 +12,8 @@ namespace MythicArena.Data
         //needed constructor to get rid of error
         public MonsterContext(DbContextOptions<MonsterContext> options) : base(options)
         {
+
+
         }
 
 

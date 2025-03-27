@@ -8,6 +8,7 @@
 
 @inject MonsterContext DbContext
 @inject Fetch Fetch
+@inject IMonsterRepository MonsterRepository
 @rendermode InteractiveServer
 
 
@@ -114,7 +115,7 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        
+
         _monsters = Fetch.GetAllMonsters();
     }
 
@@ -139,6 +140,7 @@ else
             };
 
             _monsters.Add(newMonster);  // Add the new monster to the list
+            MonsterRepository.AddMonster(newMonster);
 
             newMonsterName = string.Empty;
             newMonsterMaxHealth = 0;
